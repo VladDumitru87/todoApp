@@ -1,0 +1,11 @@
+<li *ngIf="todoItem" class="list-group-item todo-item" [ngClass]="setAssigneeClass()">
+    <input type="checkbox" class="form-check-input me-1" />
+    <span class="todo-name" [ngClass]="setClass()">{{ todoItem.name | wordfilter }}</span>
+    <span *ngIf="showLocation()">Location: {{ todoItem.location }}</span>
+    <div class="btn btn-primary delete-btn">Delete</div>
+</li>
+
+<!-- If a task is completed, remove the location.. I don't want to see it -->
+
+<!-- Add another field to the todoItems... { ...asignee: "self" | "any other thing", }...
+    If assignee is self, i want the text background color to be green -->

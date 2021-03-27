@@ -1,0 +1,23 @@
+.todo-name {
+    margin-right: 20px;
+}
+
+.is-complete {
+    text-decoration: line-through;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+}
+
+.delete-btn {
+    margin-left: auto;
+}
+
+.assignee-self {
+    .todo-name {
+        color: green;
+    }
+}
