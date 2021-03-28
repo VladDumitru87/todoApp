@@ -1,6 +1,8 @@
-<div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Item..." aria-label="Item...">
-    <div class="input-group-append">
-        <app-button [text]="'Add Item'"></app-button>
+<form action="">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Item..." aria-label="Item..." name='title' [(ngModel)]="newItem">
+        <div class="input-group-append">
+            <app-button [text]="'Add Item'" (click)="addItem(newItem)"></app-button>
+        </div>
     </div>
-</div>
+</form>

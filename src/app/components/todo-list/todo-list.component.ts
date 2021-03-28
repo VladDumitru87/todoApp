@@ -66,7 +66,12 @@ export class TodoListComponent implements OnInit {
 			}
 		}
 
-	  }
+	};
+
+	addTodoItem(todoItem) {
+		console.log('New Todo: ', todoItem)
+		this.todoItems.push(todoItem);
+	};
 
 	ngOnInit(): void {}
 }
