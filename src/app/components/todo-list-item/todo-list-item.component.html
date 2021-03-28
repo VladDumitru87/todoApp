@@ -1,8 +1,8 @@
 <li *ngIf="todoItem" class="list-group-item todo-item" [ngClass]="setAssigneeClass()">
-    <input type="checkbox" class="form-check-input me-1" />
+    <input type="checkbox" class="form-check-input me-1" (change)="onCheckboxToggle(todoItem)" [checked]='todoItem.completed'/>
     <span class="todo-name" [ngClass]="setClass()">{{ todoItem.name | wordfilter }}</span>
     <span *ngIf="showLocation()">Location: {{ todoItem.location }}</span>
-    <div class="btn btn-primary delete-btn">Delete</div>
+    <div class="btn btn-primary delete-btn" (click)="onDelete(todoItem)">Delete</div>
 </li>
 
 <!-- If a task is completed, remove the location.. I don't want to see it -->

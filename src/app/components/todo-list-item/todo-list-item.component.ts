@@ -1,44 +1,46 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
-  selector: 'app-todo-list-item',
-  templateUrl: './todo-list-item.component.html',
-  styleUrls: ['./todo-list-item.component.scss'],
+	selector: 'app-todo-list-item',
+	templateUrl: './todo-list-item.component.html',
+	styleUrls: ['./todo-list-item.component.scss'],
 })
 export class TodoListItemComponent implements OnInit {
-  constructor() {}
+	constructor() {}
 
-  @Input() todoItem;
-  ngOnInit(): void {}
+	@Input() todoItem;
 
-  setClass() {
-    let whatever = {
-      todoItem: true,
-      'is-complete': this.todoItem.completed,
-    };
-    return whatever;
-  }
+	@Output() deleteTodoEvent = new EventEmitter<unknown>();
 
-  setAssigneeClass() {
-    let assigneeClass = {
-      'assignee-self': this.todoItem.assignee.toLowerCase() === 'self',
-    };
-    return assigneeClass;
-  }
+	ngOnInit(): void {}
 
-  showLocation() {
-    if (this.todoItem.location && !this.todoItem.completed) {
-      return true;
-    }
+	setClass() {
+		let whatever = {
+			todoItem: true,
+			'is-complete': this.todoItem.completed,
+		};
+		return whatever;
+	}
 
-    // return this.todoItem.location && !this.todoItem.completed; //Another way.. simple short,
+	setAssigneeClass() {
+		let assigneeClass = {
+			'assignee-self': this.todoItem.assignee.toLowerCase() === 'self',
+		};
+		return assigneeClass;
+	}
 
-    // if (this.todoItem.location) {
-    //   if (this.todoItem.completed) {
-    //     return false;
-    //   } else {
-    //     return true;
-    //   }
-    // }
-  }
+	showLocation() {
+		if (this.todoItem.location && !this.todoItem.completed) {
+			return true;
+		}
+	}
+
+	onDelete(todoItem) {
+		// console.log('to be deleted: ', todoItem);
+		this.deleteTodoEvent.emit(todoItem);
+	}
+
+	onCheckboxToggle(todoItem) {
+	todoItem.completed = !todoItem.completed
+	}
 }

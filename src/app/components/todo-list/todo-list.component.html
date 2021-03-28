@@ -1,4 +1,4 @@
 <ul class="list-group">
     <!-- <new component here> pass in the name of the item  -->
-    <app-todo-list-item *ngFor="let todo of todoItems" [todoItem]='todo'></app-todo-list-item>
+    <app-todo-list-item *ngFor="let todo of todoItems" [todoItem]='todo' (deleteTodoEvent)="deleteTodo($event)"></app-todo-list-item>
 </ul>
